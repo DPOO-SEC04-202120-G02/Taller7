@@ -42,6 +42,7 @@ class AgregarNodoTest {
 	@Test//Agregar un nodo
 	public void testAgregarNodo() {
 		SetUp();
+		//Caso 1: Nodo agregado
 		try {
 			almacenTest.agregarNodo("11", "Marca", "9999", "MarcaTest");
 		} catch (AlmacenException e) {
@@ -49,19 +50,28 @@ class AgregarNodoTest {
 		}
 		NodoAlmacen nodo =almacenTest.buscarNodo("9999");
 		assertTrue(nodo.darNombre().equals("MarcaTest"),"El nodo es el esperado");
-	}
-	
-	@Test//Agregar un nodo a un padre inexistente
-	public void testAgregarNodoFail() {
-		SetUp();
+		//Caso 2: El padre del nodo nuevo es inexistente
 		try {
 			almacenTest.agregarNodo("99", "Marca", "9998", "MarcaTest");
 		} catch (AlmacenException e) {
 			fail("Error al agregar nodo");
 		}
-		NodoAlmacen nodo =almacenTest.buscarNodo("9998");
+		NodoAlmacen nodo2 =almacenTest.buscarNodo("9998");
 		
-		assertTrue(nodo==null,"El nodo no fue creado");
+		assertTrue(nodo2==null,"El nodo no fue creado");
+
+	}
+	
+	@Test//Elimina el nodo "1111", el cual ya se ha probado que existe originalmente
+	public void testEliminarNodo() {
+		SetUp();
+		try {
+			almacenTest.eliminarNodo("1111");
+		} catch (AlmacenException e) {
+			fail("No se pudo eliminar el nodo");
+		}
+		NodoAlmacen nodo2 =almacenTest.buscarNodo("1111");
+		assertTrue(nodo2==null,"El nodo fue eliminado");
 	}
 	
 }

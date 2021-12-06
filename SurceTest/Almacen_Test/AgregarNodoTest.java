@@ -24,19 +24,15 @@ class AgregarNodoTest {
 	}
 	
 	@Test//Buscar un nodo
-	public void testBuscarNodo1() {
+	public void testBuscarNodo() {
 		SetUp();
 		NodoAlmacen nodo =almacenTest.buscarNodo("1111");
 		assertTrue(nodo.darNombre().equals("SAMSUNG"),"El nodo es el esperado");
 		assertTrue(nodo.darTipo().equals("Marca"),"El nodo es el esperado");
-	}
-	
-	@Test//Buscar el ultimo nodo cargado
-	public void testBuscarNodo2() {
-		SetUp();
-		NodoAlmacen nodo =almacenTest.buscarNodo("1132B2");
-		assertTrue(nodo.darNombre().equals("Muebles&Accesorios"),"El nodo es el esperado");
-		assertTrue(nodo.darTipo().equals("Marca"),"El nodo es el esperado");
+		
+		NodoAlmacen nodo2 =almacenTest.buscarNodo("1132B2");
+		assertTrue(nodo2.darNombre().equals("Muebles&Accesorios"),"El nodo es el esperado");
+		assertTrue(nodo2.darTipo().equals("Marca"),"El nodo es el esperado");
 	}
 	
 	@Test//Agregar un nodo

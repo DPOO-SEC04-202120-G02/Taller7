@@ -53,11 +53,19 @@ private Almacen almacenTest;
 	@Test
 	public void VenderProducto() {
 		SetUp();
+		int i =3;
 		Categoria cat = almacenTest.darCategoriaRaiz();//Asumiendo que darCategorias() funciona.
+		//Vender una cantidad entera positiva
 		int v_1=cat.buscarProducto("24981721").darCantidadUnidadesVendidas();
-		almacenTest.venderProducto("24981721", 3);
+		almacenTest.venderProducto("24981721", i);
 		int v_2=cat.buscarProducto("24981721").darCantidadUnidadesVendidas();
-		assertEquals(3, v_2-v_1);
+		assertEquals(i, v_2-v_1);
+		//Vender una cantidad negativa
+		i=-3;
+		v_1=cat.buscarProducto("24981721").darCantidadUnidadesVendidas();
+		almacenTest.venderProducto("24981721", i);
+		v_2=cat.buscarProducto("24981721").darCantidadUnidadesVendidas();
+		assertNotEquals(i, v_2-v_1);//Se espera que nos e vendan -3 unidades
 	}
 	
 }

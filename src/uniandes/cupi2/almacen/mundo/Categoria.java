@@ -103,7 +103,7 @@ public class Categoria extends NodoAlmacen
      * @param pIdNodo Identificador del nodo. pIdNodo != null && pIdNodo != "".
      * @return True si esta categoría tiene un hijo con el identificador dado, False en caso contrario.
      */
-    private boolean tieneHijo( String pIdNodo )
+    public boolean tieneHijo( String pIdNodo )
     {
         boolean respuesta = false;
         for( int i = 0; i < nodosHijos.size( ) && !respuesta; i++ )
@@ -347,7 +347,7 @@ public class Categoria extends NodoAlmacen
      * Retorna el valor total de las ventas de la categoría.
      * @return Valor de las ventas de la categoría.
      */
-    public double darValorVentas( )
+    public double darValorVentas()
     {
         double valorVentas = 0;
         for( NodoAlmacen nodoAlmacen : nodosHijos )
